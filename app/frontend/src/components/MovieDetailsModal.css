@@ -1,0 +1,74 @@
+/* Style de la modale pour les détails du film */
+.movie-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* Conteneur principal de la modale */
+.movie-modal {
+    background-color: #141414;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease;
+}
+
+/* Image du film */
+.movie-modal img {
+    width: 80%;
+    max-width: 250px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Bouton de fermeture de la modale */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #e50914;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+/* Titre et informations */
+.movie-modal h2 {
+    font-size: 1.8em;
+    color: #e50914;
+    margin-bottom: 15px;
+}
+
+.movie-modal p {
+    font-size: 1em;
+    line-height: 1.5;
+    color: #ddd;
+    margin-bottom: 15px;
+}
+
+.movie-modal p strong {
+    color: #fff;
+}
+
+.movie-modal .details {
+    margin-top: 15px;
+    text-align: left;
+}
