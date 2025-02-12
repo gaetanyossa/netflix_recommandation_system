@@ -1,5 +1,7 @@
 # Netflix Recommendation System
 
+![alt text](image.png)
+
 Le **Netflix Recommendation System** est une application web qui génère des recommandations de films basées sur un système de filtrage collaboratif. L'application utilise **Flask** pour le backend et **React** pour le frontend, et les recommandations sont basées sur des algorithmes de similarité de films utilisant **TF-IDF** et **cosine similarity**.
 
 ## Fonctionnalités principales
