@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend  # Construire l'image à partir du répertoire frontend
+      dockerfile: Dockerfile  # Utiliser le Dockerfile dans le répertoire frontend
+    container_name: frontend
+    ports:
+      - "80:80"  # Nginx servira le frontend sur le port 80
+    environment:
+      - REACT_APP_BACKEND_URL=http://backend:5000  # URL du backend accessible depuis le conteneur frontend
+    depends_on:
+      - backend
+    networks:
+      - app_network
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "8080:80"  # Nginx écoute sur le port 80 pour servir le frontend
+    volumes:
+      - ./frontend/build:/usr/share/nginx/html  # Monte le dossier build du frontend dans Nginx
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - app_network
+
+  backend:
+    image: python:3.9-slim
+    container_name: backend
+    working_dir: /app
+    volumes:
+      - .:/app  # Monte la racine du projet pour accéder à app.py et requirements.txt
+    ports:
+      - "5000:5000"  # Expose le backend sur le port 5000
+    command: "sh -c 'pip install --no-cache-dir -r requirements.txt && python app.py'"  # Commande sur une seule ligne
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
