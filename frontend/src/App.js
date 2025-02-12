@@ -18,10 +18,10 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const moviesResponse = await axios.get("http://127.0.0.1:5000/random_movies");
+        const moviesResponse = await axios.get("http://localhost:5000/random_movies");
         setTopMovies(moviesResponse.data);
 
-        const titlesResponse = await axios.get("http://127.0.0.1:5000/movies_titles");
+        const titlesResponse = await axios.get("http://localhost:5000/movies_titles");
         setAllTitles(titlesResponse.data);
       } catch (error) {
         console.error("Erreur lors de la récupération des données :", error);
@@ -36,7 +36,7 @@ function App() {
   const fetchRecommendations = async (query) => {
     setIsLoadingRecommendations(true);
     try {
-      const response = await axios.post("http://127.0.0.1:5000/recommend", { query });
+      const response = await axios.post("http://localhost:5000/recommend", { query });
       setRecommendations(response.data);
     } catch (error) {
       console.error("Erreur lors de la récupération des recommandations :", error);
