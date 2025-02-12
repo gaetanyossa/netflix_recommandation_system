@@ -6,10 +6,8 @@ import random
 import numpy as np
 
 app = Flask(__name__)
-CORS(app)
-
-# Clé secrète pour les sessions Flask
-app.secret_key = 'votre_cle_secrete_flask'
+CORS(app)  # Autoriser toutes les origines
+app.secret_key = 'votre_cle_secrete_flask'  # Clé secrète pour les sessions Flask
 
 # Charger les données des films
 with open("movies_list.pkl", "rb") as f:
@@ -73,4 +71,5 @@ def recommend_movies():
     return jsonify(recommendations)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    print("Démarrage de l'application...")
+    app.run(host="0.0.0.0", port=5000, debug=True)  # Lancer l'application Flask
